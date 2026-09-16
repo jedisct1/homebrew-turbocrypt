@@ -21,11 +21,11 @@ class Turbocrypt < Formula
     zsh_completion.install "shell-completion/zsh/_turbocrypt"
     fish_completion.install "shell-completion/fish/turbocrypt.fish"
     pkgshare.install "source", "BUILD-INFO.json"
-  end
-
-  def post_install
     system "/usr/bin/codesign", "--verify", "--strict", "--all-architectures",
-           "-R", '=anchor apple generic and identifier "org.pureftpd.turbocrypt" and certificate leaf[subject.OU] = "888H8YF752" and certificate leaf[field.1.2.840.113635.100.6.1.13] exists', bin/"turbocrypt"
+           "-R", "=anchor apple generic and " \
+                 'identifier "org.pureftpd.turbocrypt" and ' \
+                 'certificate leaf[subject.OU] = "888H8YF752" and ' \
+                 "certificate leaf[field.1.2.840.113635.100.6.1.13] exists", bin/"turbocrypt"
   end
 
   def caveats
@@ -38,7 +38,10 @@ class Turbocrypt < Formula
   test do
     assert_match version.to_s, shell_output("#{bin}/turbocrypt version 2>&1")
     system "/usr/bin/codesign", "--verify", "--strict", "--all-architectures",
-           "-R", '=anchor apple generic and identifier "org.pureftpd.turbocrypt" and certificate leaf[subject.OU] = "888H8YF752" and certificate leaf[field.1.2.840.113635.100.6.1.13] exists', bin/"turbocrypt"
+           "-R", "=anchor apple generic and " \
+                 'identifier "org.pureftpd.turbocrypt" and ' \
+                 'certificate leaf[subject.OU] = "888H8YF752" and ' \
+                 "certificate leaf[field.1.2.840.113635.100.6.1.13] exists", bin/"turbocrypt"
     (testpath/"plain.txt").write "Homebrew encryption test\n"
     system bin/"turbocrypt", "keygen", "test.key"
     system bin/"turbocrypt", "encrypt", "--key", "test.key", "plain.txt", "encrypted"
