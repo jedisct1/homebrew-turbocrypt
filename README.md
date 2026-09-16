@@ -1,8 +1,9 @@
 # TurboCrypt for Homebrew
 
-Install [TurboCrypt](https://github.com/jedisct1/turbocrypt) on macOS 13 or later:
+Install [TurboCrypt](https://github.com/jedisct1/turbocrypt) on macOS 13 or later. Trust the tap first, then install:
 
 ```sh
+brew trust jedisct1/turbocrypt
 brew install jedisct1/turbocrypt/turbocrypt
 ```
 
