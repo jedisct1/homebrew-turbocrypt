@@ -1,0 +1,26 @@
+# TurboCrypt for Homebrew
+
+Install [TurboCrypt](https://github.com/jedisct1/turbocrypt) on macOS 13 or later:
+
+```sh
+brew install jedisct1/turbocrypt/turbocrypt
+```
+
+The universal executable runs on Apple Silicon and Intel Macs and is signed with Frank Denis's Apple Developer ID. Shell completions for Bash, Zsh, and Fish are included.
+
+To update:
+
+```sh
+brew update
+brew upgrade turbocrypt
+```
+
+To use encrypted mounts, also install fuse-t:
+
+```sh
+brew install --cask fuse-t
+```
+
+Encryption, decryption, and Git integration don't require fuse-t.
+
+Releases and formula updates are built, signed, and published from the maintainer's Mac using `make release` in the [TurboCrypt source repository](https://github.com/jedisct1/turbocrypt). This repository hosts the signed archives and generated formula; it doesn't build them in GitHub Actions.
