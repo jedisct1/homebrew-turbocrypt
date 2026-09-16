@@ -23,5 +23,3 @@ brew install --cask fuse-t
 ```
 
 Encryption, decryption, and Git integration don't require fuse-t.
-
-Releases and formula updates are built, signed, and published from the maintainer's Mac using `make release` in the [TurboCrypt source repository](https://github.com/jedisct1/turbocrypt). This repository hosts the signed archives and generated formula; it doesn't build them in GitHub Actions.
