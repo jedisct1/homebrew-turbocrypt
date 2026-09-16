@@ -7,7 +7,10 @@ class Turbocrypt < Formula
   license all_of: ["MIT", "LGPL-2.1-only"]
 
   depends_on :macos
-  depends_on macos: :ventura
+
+  on_macos do
+    depends_on macos: :ventura
+  end
 
   # Preserve the upstream Developer ID signature.
   skip_clean "bin/turbocrypt"
