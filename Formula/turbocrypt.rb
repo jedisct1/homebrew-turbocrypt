@@ -1,9 +1,8 @@
 class Turbocrypt < Formula
   desc "Fast file, directory, and Git encryption"
   homepage "https://github.com/jedisct1/turbocrypt"
-  url "https://github.com/jedisct1/homebrew-turbocrypt/releases/download/0.9.6/turbocrypt_0.9.6_macos_universal.tar.gz"
-  version "0.9.6"
-  sha256 "eb3892fdf5e8341fd121118b7faad47b81ecd5e36f4e4c810adeca0e75b07b8d"
+  url "https://github.com/jedisct1/turbocrypt/releases/download/0.9.8/turbocrypt_0.9.8_darwin_all.tar.gz"
+  sha256 "33227a80eb9de4f8a503fa0fc4573efdf030cba6ca26c04ec324f3bbacf24da3"
   license all_of: ["MIT", "LGPL-2.1-only"]
 
   depends_on :macos
@@ -12,20 +11,8 @@ class Turbocrypt < Formula
     depends_on macos: :ventura
   end
 
-  # Preserve the upstream Developer ID signature.
-  skip_clean "bin/turbocrypt"
-
   def install
     bin.install "turbocrypt"
-    bash_completion.install "shell-completion/bash/turbocrypt"
-    zsh_completion.install "shell-completion/zsh/_turbocrypt"
-    fish_completion.install "shell-completion/fish/turbocrypt.fish"
-    pkgshare.install "source", "BUILD-INFO.json"
-    system "/usr/bin/codesign", "--verify", "--strict", "--all-architectures",
-           "-R", "=anchor apple generic and " \
-                 'identifier "org.pureftpd.turbocrypt" and ' \
-                 'certificate leaf[subject.OU] = "888H8YF752" and ' \
-                 "certificate leaf[field.1.2.840.113635.100.6.1.13] exists", bin/"turbocrypt"
   end
 
   def caveats
@@ -37,11 +24,6 @@ class Turbocrypt < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/turbocrypt version 2>&1")
-    system "/usr/bin/codesign", "--verify", "--strict", "--all-architectures",
-           "-R", "=anchor apple generic and " \
-                 'identifier "org.pureftpd.turbocrypt" and ' \
-                 'certificate leaf[subject.OU] = "888H8YF752" and ' \
-                 "certificate leaf[field.1.2.840.113635.100.6.1.13] exists", bin/"turbocrypt"
     (testpath/"plain.txt").write "Homebrew encryption test\n"
     system bin/"turbocrypt", "keygen", "test.key"
     system bin/"turbocrypt", "encrypt", "--key", "test.key", "plain.txt", "encrypted"

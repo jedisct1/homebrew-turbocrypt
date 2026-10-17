@@ -7,7 +7,7 @@ brew trust jedisct1/turbocrypt
 brew install jedisct1/turbocrypt/turbocrypt
 ```
 
-The universal executable runs on Apple Silicon and Intel Macs and is signed with Frank Denis's Apple Developer ID. Shell completions for Bash, Zsh, and Fish are included.
+The universal executable runs on Apple Silicon and Intel Macs.
 
 To update:
 
