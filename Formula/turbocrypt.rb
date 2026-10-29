@@ -1,8 +1,8 @@
 class Turbocrypt < Formula
   desc "Fast file, directory, and Git encryption"
   homepage "https://github.com/jedisct1/turbocrypt"
-  url "https://github.com/jedisct1/turbocrypt/releases/download/0.9.8/turbocrypt_0.9.8_darwin_all.tar.gz"
-  sha256 "33227a80eb9de4f8a503fa0fc4573efdf030cba6ca26c04ec324f3bbacf24da3"
+  url "https://github.com/jedisct1/turbocrypt/releases/download/0.9.9/turbocrypt_0.9.9_darwin_all.tar.gz"
+  sha256 "35ab6c275b76eb093b0eb7c6b86430924676b945ece917c19ba158425a3c4f64"
   license all_of: ["MIT", "LGPL-2.1-only"]
 
   depends_on :macos
